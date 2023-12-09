@@ -1,3 +1,7 @@
+// spider chart code came from here:
+// https://yangdanny97.github.io/blog/2019/03/01/D3-Spider-Chart
+// https://gist.github.com/nbremer/21746a9668ffdf6d8242
+
 // creating legend
 var legend = d3.select('#legend');
 legend.append("circle").attr("cx",75).attr("cy",35).attr("r", 6).style("fill", "#00A0B0")
@@ -245,6 +249,7 @@ function updateChart(selectedCity, svg, chartG) {
         return coordinates;
     }
 
+    // plotting data points on chart
     var paths = chartG.selectAll('.path')
         .data(data);
 
@@ -274,46 +279,4 @@ function updateChart(selectedCity, svg, chartG) {
         .attr("fill", (_, i) => colors[i]);
 
     paths.exit().remove();
-
-
-
-    // var points = chartG.selectAll('.point')
-    //     .data(data);
-    
-    // var pointsEnter = points.enter()
-    //     .append('g')
-    //     .attr('class', 'point')
-
-    // pointsEnter.selectAll('circle') // Add this line to select existing circles or create new ones
-    //     .data(d => getPathCoordinates(d)) // Use the same data as the path
-    //     .enter()
-    //     .append('circle')
-    //     .attr("cx", d => d.x) // Use the x coordinate from the path data
-    //     .attr("cy", d => d.y) // Use the y coordinate from the path data
-    //     .attr("r", 5) // Adjust the radius as needed
-    //     .attr("fill", (_, i) => colors[i]);
-
-    // var pointsMerge = pointsEnter.merge(points);
-
-    // pointsMerge.selectAll('circle') // Select the circles
-    //     .data(d => getPathCoordinates(d)) // Use the same data as the path
-    //     .enter()
-    //     .append('circle')
-    //     .transition()
-    //     .duration(1000) // Adjust the transition duration as needed
-    //     .attr("cx", d => d.x) // Use the x coordinate from the path data
-    //     .attr("cy", d => d.y) // Use the y coordinate from the path data
-    //     .attr("r", 5) // Adjust the radius as needed
-    //     .attr("fill", (_, i) => colors[i]);
-
-    // pointsMerge.select('circle') // Select the circles
-    //     .datum(d => getPathCoordinates(d))
-    //     .transition()
-    //     .duration(1000) // Adjust the transition duration as needed
-    //     .attr("cx", d => d.x) // Use the x coordinate from the path data
-    //     .attr("cy", d => d.y) // Use the y coordinate from the path data
-    //     .attr("r", 5) // Adjust the radius as needed
-    //     .attr("fill", (_, i) => colors[i]);
-
-    // points.exit().remove();
 }
